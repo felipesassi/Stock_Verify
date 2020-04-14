@@ -21,7 +21,7 @@ def main():
     opt = render_sidebar(df)
     options = ("Análise de papéis", "Análise de setores", "Análise de indicadores")
     if opt == options[0]:
-        show_stock_page(df)
+        show_stock_page(df, similarity)
     elif opt == options[1]:
         show_sector_page(df, prices)
     else:

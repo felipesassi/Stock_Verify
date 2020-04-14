@@ -6,7 +6,7 @@ import seaborn as sns
 import pickle
 import plotly.express as px
 
-def show_stock_page(dataframe):
+def show_stock_page(dataframe, similarity_data):
     papeis = dataframe["Papel"].unique()
     sel = st.selectbox("Qual papel deseja analisar?", papeis)
     df_sel = dataframe[dataframe["Papel"] == sel]
@@ -38,7 +38,7 @@ def show_stock_page(dataframe):
     st.markdown("- EV/EBIT: {}" .format(ev))
     st.markdown("## Similaridade entre papéis")
     qtt = st.slider('Número de ações para análise', 2, 20, 5)
-    source = pd.DataFrame(similarity[sel]).head(qtt)
+    source = pd.DataFrame(similarity_data[sel]).head(qtt)
     fig = px.bar(source, x='Papel', y='Similaridade')
     fig.update_layout(xaxis_title = "", template = "presentation")
     st.plotly_chart(fig, use_container_width=True)
