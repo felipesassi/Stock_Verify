@@ -45,7 +45,7 @@ def scrap_web_data():
                     data[key[-1]].append("NaN")
     clean_dict = {}
     for key in data.keys(): 
-        if len(data[key]) == 187:
+        if len(data[key]) == len(data["Papel"]):
             clean_dict[key] = data[key]
     df = pd.DataFrame(clean_dict)
     df.to_csv("temp_df.csv", index = False)
@@ -83,7 +83,10 @@ def scrap_web_data():
     df_clean["2016"] = df_clean["2016"].apply(remove_perc)
     df_clean["2015"] = df_clean["2015"].apply(remove_perc)
     df_clean["Cres. Rec (5a)"] = df_clean["Cres. Rec (5a)"].apply(remove_perc)
-    df_clean.to_csv("processed.csv", index = False)
+    df_clean.to_csv("../data/processed.csv", index = False)
 
 if __name__ == "__main__":
+  try:
     scrap_web_data()
+  except:
+    pass
