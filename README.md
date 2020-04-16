@@ -1,7 +1,8 @@
 # Stock Verify
 
-Nesse projeto foi desenvolvida uma *dashboard* para análise de ações listadas na bolsa de valores brasileira.  Além disso, foi realizado o *deploy* da aplicação no Heroku
+Nesse projeto foi desenvolvida uma *dashboard* para análise de ações listadas na bolsa de valores brasileira.  Além disso, foi realizado o *deploy* da aplicação no Heroku.
 
+A aplicação está hospedada [aqui](https://stock-verify.herokuapp.com/).
 
 ## Dados utilizados
 
@@ -39,5 +40,51 @@ A figura abaixo apresenta a interface dessa seção.
 
 ## Cálculo do índice de similaridade
 
-Na seção **análise dos papeis** um índice de similaridade é calculado. Esse índice é calculado por meio da similaridade do cosseno. Para realizar esse cálculo são utilizados indicadores fundamentalistas para cada papel (como seus atributos). Esses indicadores são, P/L, P/VP, P/EBIT, PSR, P/Ativos, P/Cap. Giro, P/Ativ. Circ. Liq., Div. Yield, EV/EBITDA, EV/EBIT, Cresc. Rec. (5 anos), LPA, VPA, Marg. Bruta, Marg. Líquida, EBIT/Ativo, ROIC, ROE, Liquidez Corrente, DB/PL, Giro Ativos.
+Na seção **análise dos papeis** um índice de similaridade é calculado. Esse índice é calculado por meio da [similaridade do cosseno](https://en.wikipedia.org/wiki/Cosine_similarity). Para realizar esse cálculo são utilizados indicadores fundamentalistas para cada papel (como seus atributos). Esses indicadores são, P/L, P/VP, P/EBIT, PSR, P/Ativos, P/Cap. Giro, P/Ativ. Circ. Liq., Div. Yield, EV/EBITDA, EV/EBIT, Cresc. Rec. (5 anos), LPA, VPA, Marg. Bruta, Marg. Líquida, EBIT/Ativo, ROIC, ROE, Liquidez Corrente, DB/PL, Giro Ativos.
+
+## Como usar
+
+### Requirements
+
+- seaborn==0.9.0
+- numpy==1.16.4
+- streamlit==0.57.3
+- pandas==0.24.1
+- matplotlib==3.1.1
+- tornado==5.0
+- plotly==4.6.0
+- requests==2.18.4
+- beautifulsoup4==4.9.0
+- lxml==4.5.0
+
+Para instalar todos os requerimentos o seguinte comando pode ser utilizado:
+
+```
+pip install -r requirements.txt
+```
+### Obtenção dos dados
+
+Para realizar o *download* do conjunto de dados o seguinte comando deverá ser utilizado:
+
+```
+python3 web_scrap/main.py
+```
+
+### Geração do *dashboard*
+
+Para gerar o *dashboard* o seguinte comando deverá ser utilizado:
+
+```
+streamlit run dashboard.py
+```
+
+## Descrição dos arquivos do projeto
+
+### dashboard
+
+Aqui ficam os códigos responsáveis pela criação da *dashboard*.
+
+### web_scrap
+
+Aqui ficam os códigos responsácei pelo web scraping dos dados e posterior processamento dos mesmos.
 
